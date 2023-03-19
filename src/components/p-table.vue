@@ -1,6 +1,10 @@
 <template>
   <div>
+    <div class="table_title">
+      <slot name="title"></slot>
+    </div>
     <div class="table_btn">
+      
       <slot name="button"></slot>
     </div>
     
@@ -98,6 +102,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.table_title {
+  float: left;
+}
 .table_btn {
   float: right;
 }

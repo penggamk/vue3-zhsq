@@ -44,7 +44,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/accounting_Archives',
     name: 'accounting_Archives',
     meta: {
-      title: "测试3"
+      title: "表计档案管理"
     },
     component: () => import('../views/accounting_Archives/accounting_Archives.vue'),
   },

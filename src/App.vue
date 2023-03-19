@@ -52,6 +52,10 @@
         </el-menu>
       </el-aside>
       <el-main>
+        <el-breadcrumb separator="/">
+          <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+          <!-- <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item> -->
+        </el-breadcrumb>
         <router-view></router-view>
       </el-main>
     </el-container>
@@ -62,20 +66,23 @@
 import Header from "../src/layout/header.vue";
 // import Aside from "../src/layout/aside.vue"
 import { reactive } from "vue";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 const noMenu = ["/login"];
 const state = reactive({
   showMenu: true,
   defaultOpen: ["1", "2", "3", "4"],
   currentPath: "/",
+  title: ""
 });
 const router = useRouter();
+const route = useRoute();
 router.beforeEach((to, from, next) => {
   if (to.path == "/login") {
     next();
   } else {
-    next();
+    next(); 
   }
+  // state.title = route.meta.value.title
   state.showMenu = !noMenu.includes(to.path);
   state.currentPath = to.path;
   console.log(to.path, state.currentPath);
@@ -99,6 +106,5 @@ body,
   background: #0079fe;
 }
 .el-aside {
-
 }
 </style>
